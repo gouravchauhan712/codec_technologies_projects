@@ -3,10 +3,12 @@ import numpy as np
 import joblib
 
 BASE_DIR = os.path.dirname(__file__)
+model = joblib.load(os.path.join(BASE_DIR, "random_forest_model.pkl"))
+scaler = joblib.load(os.path.join(BASE_DIR, "scaler.pkl"))
 
 # ------------------ Load Model and Scaler ------------------
-model = joblib.load("random_forest_model.pkl")
-scaler = joblib.load("scaler.pkl")
+# model = joblib.load("random_forest_model.pkl")
+# scaler = joblib.load("scaler.pkl")
 
 # ------------------ Feature Names ------------------
 feature_names = ['Pregnancies', 'Glucose', 'BloodPressure',
@@ -43,4 +45,5 @@ if submitted:
         st.error(f"⚠️ The model predicts that the person **has diabetes**.\n\nProbability: {probability:.2f}")
     else:
         st.success(f"✅ The model predicts that the person **does not have diabetes**.\n\nProbability: {1 - probability:.2f}")
+
 
