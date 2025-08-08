@@ -4,8 +4,8 @@ import joblib
 import os
 
 BASE_DIR = os.path.dirname(__file__)
-model_path = os.path.join(BASE_DIR, "logistic_regression_model.pkl")
-scaler_path = os.path.join(BASE_DIR, "scaler.pkl") 
+model = os.path.join(BASE_DIR, "logistic_regression_model.pkl")
+scaler = os.path.join(BASE_DIR, "scaler.pkl") 
 
 # Load saved model and scaler
 # model = joblib.load("logistic_regression_model.pkl")
@@ -69,4 +69,5 @@ if st.button("Predict Churn"):
         st.error(f"❌ The customer is likely to churn.\n\nChurn Probability: **{probability:.2%}**")
     else:
         st.success(f"✅ The customer is not likely to churn.\n\nChurn Probability: **{probability:.2%}**")
+
 
