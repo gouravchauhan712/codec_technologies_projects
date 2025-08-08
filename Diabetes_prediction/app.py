@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import joblib
 
+BASE_DIR = os.path.dirname(__file__)
+
 # ------------------ Load Model and Scaler ------------------
 model = joblib.load("random_forest_model.pkl")
 scaler = joblib.load("scaler.pkl")
@@ -41,3 +43,4 @@ if submitted:
         st.error(f"⚠️ The model predicts that the person **has diabetes**.\n\nProbability: {probability:.2f}")
     else:
         st.success(f"✅ The model predicts that the person **does not have diabetes**.\n\nProbability: {1 - probability:.2f}")
+
