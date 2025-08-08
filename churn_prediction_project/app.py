@@ -3,13 +3,14 @@ import pandas as pd
 import joblib
 import os
 
-BASE_DIR = os.path.dirname(__file__)
-model = os.path.join(BASE_DIR, "logistic_regression_model.pkl")
-scaler = os.path.join(BASE_DIR, "scaler.pkl") 
-
 # Load saved model and scaler
-# model = joblib.load("logistic_regression_model.pkl")
-# scaler = joblib.load("scaler.pkl")
+
+BASE_DIR = os.path.dirname(__file__)
+model_path = os.path.join(BASE_DIR, "logistic_regression_model.pkl")
+scaler_path = os.path.join(BASE_DIR, "scaler.pkl")
+
+model = joblib.load(model_path)
+scaler = joblib.load(scaler_path)
 
 # Get expected feature names from the model itself
 feature_names = model.feature_names_in_.tolist()  # ✅ No need to load separately
@@ -69,5 +70,6 @@ if st.button("Predict Churn"):
         st.error(f"❌ The customer is likely to churn.\n\nChurn Probability: **{probability:.2%}**")
     else:
         st.success(f"✅ The customer is not likely to churn.\n\nChurn Probability: **{probability:.2%}**")
+
 
 
